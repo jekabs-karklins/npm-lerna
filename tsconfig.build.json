@@ -1,17 +1,24 @@
 {
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2019",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "composite": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+  },
   "files": [],
   "references": [
-    {
-      "path": "packages/localisation"
-    },
     {
       "path": "packages/logger"
     },
     {
       "path": "packages/message-broker"
-    },
-    {
-      "path": "packages/uows-client-generator"
     },
     {
       "path": "packages/validation"
