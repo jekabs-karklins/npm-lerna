@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/UserOfficeProject/user-office-lib/compare/@esss-swap/duo-logger@1.2.0...@esss-swap/duo-logger@1.3.0) (2021-11-02)
+
+
+### Features
+
+* **new log type:** ADding failur log ([1f26510](https://github.com/UserOfficeProject/user-office-lib/commit/1f26510dd006ff26beb7cd0c127aa49557baff04))
+
+
+
+
+
 # [1.2.0](https://github.com/UserOfficeProject/user-office-lib/compare/@esss-swap/duo-logger@1.1.3...@esss-swap/duo-logger@1.2.0) (2021-11-02)
 
 
