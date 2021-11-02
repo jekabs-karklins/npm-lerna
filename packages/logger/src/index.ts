@@ -7,7 +7,7 @@ export enum LEVEL {
   ERROR = 'ERROR',
   EXCEPTION = 'EXCEPTION',
   FATAL = 'FATAL',
-  UNKNOWN = 'UNKNOWN',
+
 }
 
 class GrayLogLogger implements Logger {
@@ -30,6 +30,9 @@ class GrayLogLogger implements Logger {
         port: port,
       },
     });
+  }
+  logSuccess(_message: string): void {
+    throw new Error('Method not implemented.');
   }
 
   private createPayload(
@@ -62,9 +65,7 @@ class GrayLogLogger implements Logger {
     this.log.error(message, this.createPayload(LEVEL.ERROR, message, context));
   }
 
-  logUnknown(message: string, context: Record<string, unknown>) {
-    this.log.error(message, this.createPayload(LEVEL.UNKNOWN, message, context));
-  }
+
 
   logException(
     message: string,
@@ -88,6 +89,9 @@ class GrayLogLogger implements Logger {
 }
 
 class ConsoleLogger implements Logger {
+  logSuccess(_message: string): void {
+    throw new Error('Method not implemented.');
+  }
   logInfo(message: string, context: Record<string, unknown>) {
     this.log(LEVEL.INFO, message, context);
   }
@@ -104,9 +108,7 @@ class ConsoleLogger implements Logger {
     this.log(LEVEL.ERROR, message, context);
   }
 
-  logUnknown(message: string, context: Record<string, unknown>) {
-    this.log(LEVEL.UNKNOWN, message, context);
-  }
+
 
   logException(
     message: string,
@@ -138,11 +140,11 @@ class ConsoleLogger implements Logger {
 }
 
 export interface Logger {
+  logSuccess(message:string):void;
   logInfo(message: string, context: Record<string, unknown>): void;
   logWarn(message: string, context: Record<string, unknown>): void;
   logDebug(message: string, context: Record<string, unknown>): void;
   logError(message: string, context: Record<string, unknown>): void;
-  logUnknown(message: string, context: Record<string, unknown>): void;
   logException(
     message: string,
     exception: unknown,
