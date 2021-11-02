@@ -1,0 +1,40 @@
+mutation createVisit(
+  $scheduledEventId: Int!
+  $team: [Int!]!
+  $teamLeadUserId: Int!
+) {
+  createVisit(
+    scheduledEventId: $scheduledEventId
+    team: $team
+    teamLeadUserId: $teamLeadUserId
+  ) {
+    visit {
+      ...visit
+
+      teamLead {
+        ...basicUserDetails
+      }
+
+      registrations {
+        ...visitRegistration
+        user {
+          ...basicUserDetails
+        }
+      }
+      proposal {
+        ...proposal
+        instrument {
+          name
+        }
+      }
+
+      shipments {
+        ...shipment
+      }
+    }
+
+    rejection {
+      ...rejection
+    }
+  }
+}

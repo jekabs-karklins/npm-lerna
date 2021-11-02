@@ -1,0 +1,14 @@
+mutation cloneSample($sampleId: Int!, $title: String) {
+  cloneSample(sampleId: $sampleId, title: $title) {
+    sample {
+      ...sample
+      questionary {
+        isCompleted
+        ...questionary
+      }
+    }
+    rejection {
+      ...rejection
+    }
+  }
+}

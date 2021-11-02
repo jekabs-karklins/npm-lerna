@@ -1,0 +1,12 @@
+mutation createInstitution($name: String!, $verified: Boolean!) {
+  createInstitution(name: $name, verified: $verified) {
+    institution {
+      id
+      name
+      verified
+    }
+    rejection {
+      ...rejection
+    }
+  }
+}

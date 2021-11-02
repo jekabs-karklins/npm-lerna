@@ -1,0 +1,15 @@
+query getInstruments($callIds: [Int!]) {
+  instruments(callIds: $callIds) {
+    instruments {
+      id
+      name
+      shortCode
+      description
+      managerUserId
+      scientists {
+        ...basicUserDetails
+      }
+    }
+    totalCount
+  }
+}

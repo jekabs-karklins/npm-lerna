@@ -1,0 +1,10 @@
+mutation deleteUnit($id: Int!) {
+  deleteUnit(id: $id) {
+    unit {
+      id
+    }
+    rejection {
+      ...rejection
+    }
+  }
+}

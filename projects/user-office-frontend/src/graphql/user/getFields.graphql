@@ -1,0 +1,8 @@
+query getFields {
+  getFields {
+    nationalities {
+      id
+      value
+    }
+  }
+}

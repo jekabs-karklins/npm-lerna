@@ -1,0 +1,61 @@
+query getProposal($primaryKey: Int!) {
+  proposal(primaryKey: $primaryKey) {
+    ...proposal
+    proposer {
+      ...basicUserDetails
+    }
+    users {
+      ...basicUserDetails
+    }
+    questionary {
+      ...questionary
+      isCompleted
+    }
+    technicalReview {
+      ...coreTechnicalReview
+      reviewer {
+        ...basicUserDetails
+      }
+    }
+    reviews {
+      id
+      grade
+      comment
+      status
+      userID
+      sepID
+      reviewer {
+        firstname
+        lastname
+        id
+      }
+    }
+    instrument {
+      id
+      name
+      shortCode
+    }
+    call {
+      id
+      shortCode
+      isActive
+      allocationTimeUnit
+    }
+    sep {
+      id
+      code
+    }
+    samples {
+      ...sample
+      questionary {
+        isCompleted
+      }
+    }
+    genericTemplates {
+      ...genericTemplate
+      questionary {
+        isCompleted
+      }
+    }
+  }
+}
