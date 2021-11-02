@@ -31,9 +31,7 @@ class GrayLogLogger implements Logger {
       },
     });
   }
-  logSuccess(_message: string): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   private createPayload(
     level: LEVEL,
@@ -89,9 +87,6 @@ class GrayLogLogger implements Logger {
 }
 
 class ConsoleLogger implements Logger {
-  logSuccess(_message: string): void {
-    throw new Error('Method not implemented.');
-  }
   logInfo(message: string, context: Record<string, unknown>) {
     this.log(LEVEL.INFO, message, context);
   }
@@ -140,7 +135,6 @@ class ConsoleLogger implements Logger {
 }
 
 export interface Logger {
-  logSuccess(message:string):void;
   logInfo(message: string, context: Record<string, unknown>): void;
   logWarn(message: string, context: Record<string, unknown>): void;
   logDebug(message: string, context: Record<string, unknown>): void;
