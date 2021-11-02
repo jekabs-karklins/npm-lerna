@@ -13,6 +13,7 @@ var LEVEL;
     LEVEL["ERROR"] = "ERROR";
     LEVEL["EXCEPTION"] = "EXCEPTION";
     LEVEL["FATAL"] = "FATAL";
+    LEVEL["UNKNOWN"] = "UNKNOWN";
 })(LEVEL = exports.LEVEL || (exports.LEVEL = {}));
 class GrayLogLogger {
     constructor(server, port, environment, options) {
@@ -51,10 +52,11 @@ class GrayLogLogger {
     logError(message, context) {
         this.log.error(message, this.createPayload(LEVEL.ERROR, message, context));
     }
+    logUnknown(message, context) {
+        this.log.error(message, this.createPayload(LEVEL.UNKNOWN, message, context));
+    }
     logException(message, exception, context) {
         if (exception instanceof Error) {
-            // explicitly extract the properties and pass them on
-            // so when the error is stringified they show up properly
             const { name, message: msg, stack } = exception;
             this.logError(message, {
                 exception: { name, message: msg, stack },
@@ -82,10 +84,11 @@ class ConsoleLogger {
     logError(message, context) {
         this.log(LEVEL.ERROR, message, context);
     }
+    logUnknown(message, context) {
+        this.log(LEVEL.UNKNOWN, message, context);
+    }
     logException(message, exception, context) {
         if (exception instanceof Error) {
-            // explicitly extract the properties and pass them on
-            // so when the error is stringified they show up properly
             const { name, message: msg, stack } = exception;
             this.logError(message, {
                 exception: { name, message: msg, stack },

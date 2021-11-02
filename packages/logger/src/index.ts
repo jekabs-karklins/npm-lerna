@@ -7,6 +7,7 @@ export enum LEVEL {
   ERROR = 'ERROR',
   EXCEPTION = 'EXCEPTION',
   FATAL = 'FATAL',
+  UNKNOWN = 'UNKNOWN',
 }
 
 class GrayLogLogger implements Logger {
@@ -61,6 +62,10 @@ class GrayLogLogger implements Logger {
     this.log.error(message, this.createPayload(LEVEL.ERROR, message, context));
   }
 
+  logUnknown(message: string, context: Record<string, unknown>) {
+    this.log.error(message, this.createPayload(LEVEL.UNKNOWN, message, context));
+  }
+
   logException(
     message: string,
     exception: unknown,
@@ -99,6 +104,10 @@ class ConsoleLogger implements Logger {
     this.log(LEVEL.ERROR, message, context);
   }
 
+  logUnknown(message: string, context: Record<string, unknown>) {
+    this.log(LEVEL.UNKNOWN, message, context);
+  }
+
   logException(
     message: string,
     exception: unknown,
@@ -133,6 +142,7 @@ export interface Logger {
   logWarn(message: string, context: Record<string, unknown>): void;
   logDebug(message: string, context: Record<string, unknown>): void;
   logError(message: string, context: Record<string, unknown>): void;
+  logUnknown(message: string, context: Record<string, unknown>): void;
   logException(
     message: string,
     exception: unknown,

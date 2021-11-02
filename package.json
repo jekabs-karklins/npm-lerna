@@ -2,14 +2,7 @@
   "name": "npm-ts-workspaces-example",
   "private": true,
   "scripts": {
-    "compile": "tsc -b tsconfig.build.json",
-    "prettier": "prettier \"*.{js,json,yml,md}\" \"packages/**/*\"",
-    "format": "npm run prettier -- --write",
-    "format:check": "npm run prettier -- --check",
-    "lint": "npm run format:check",
-    "test": "lerna run test",
-    "prepare": "npm run compile",
-    "build": "npm run compile"
+    "build": "lerna run build"
   },
   "devDependencies": {
     "lerna": "^4.0.0",
