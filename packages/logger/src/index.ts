@@ -31,6 +31,9 @@ class GrayLogLogger implements Logger {
       },
     });
   }
+  logFailure(message: string): void {
+    console.log(message);
+  }
 
 
   private createPayload(
@@ -87,6 +90,9 @@ class GrayLogLogger implements Logger {
 }
 
 class ConsoleLogger implements Logger {
+  logFailure(message: string): void {
+    console.log(message);
+  }
   logInfo(message: string, context: Record<string, unknown>) {
     this.log(LEVEL.INFO, message, context);
   }
@@ -135,6 +141,7 @@ class ConsoleLogger implements Logger {
 }
 
 export interface Logger {
+  logFailure(message: string): void;
   logInfo(message: string, context: Record<string, unknown>): void;
   logWarn(message: string, context: Record<string, unknown>): void;
   logDebug(message: string, context: Record<string, unknown>): void;

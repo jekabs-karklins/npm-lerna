@@ -67,8 +67,6 @@ export default class AdminMutations {
         return page;
       })
       .catch((error) => {
-        logger.logSuccess('asd');
-
         return rejection('Could not set page text', { agent, id }, error);
       });
   }
@@ -154,6 +152,8 @@ export default class AdminMutations {
     if (generatedAccessToken === result.accessToken) {
       return result;
     } else {
+      logger.logFailure('āsdasd');
+
       return rejection('Could not generate access token');
     }
   }
